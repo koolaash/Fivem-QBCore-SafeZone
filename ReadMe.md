@@ -17,7 +17,7 @@
 ```lua
  TriggerClientEvent('safezone:client:zone', src)
 ```
-- Which then must look something like this 
+- Which then must look something like this code given below
 - Make sure not to replace the code
 
 ```lua
