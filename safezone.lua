@@ -66,7 +66,7 @@ Citizen.CreateThread(function()
 	
 		if dist <= 75.0 then 
 			if not notifIn then
-				exports['okokTextUI']:Open('You Are in safe zone', 'darkred', 'right')
+				exports['okokTextUI']:Open('You Are in safe zone', 'darkred', 'right') -- change your text ui 
 				local isEmergencyJob = getEmergencyJob()
 
 				if not isEmergencyJob then
@@ -78,7 +78,7 @@ Citizen.CreateThread(function()
 			end
 		else
 			if not notifOut then
-			exports['okokTextUI']:Close()
+			exports['okokTextUI']:Close() -- change your text ui 
 				notifOut = true
 				notifIn = false
 		end
