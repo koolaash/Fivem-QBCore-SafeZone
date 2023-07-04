@@ -53,7 +53,7 @@ RegisterNetEvent('inventory:server:UseItem', function(inventory, item)
 end)
 ```
 - You need to add that line in both events else people will be able to exploit it
-
+- For support join my [Discord](https://discord.gg/S7SXz7E8St)
 
 **DEPENDENCIES**
 -----
