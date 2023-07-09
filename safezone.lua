@@ -64,7 +64,7 @@ Citizen.CreateThread(function()
 		local ped = PlayerPedId()
 		local playerPed = PlayerPedId()
 	
-		if dist <= 75.0 then 
+		if dist <= Config.ZoneRange then 
 			if not notifIn then
 				exports['okokTextUI']:Open('You Are in safe zone', 'darkred', 'right') -- change your text ui 
 				local isEmergencyJob = getEmergencyJob()
@@ -94,7 +94,7 @@ RegisterNetEvent('safezone:client:zone', function()
 	local dist = Vdist(zones[closestZone].x, zones[closestZone].y, zones[closestZone].z, x, y, z)
 	local ped = PlayerPedId()
 
-	if dist <= 75.0 then -- how much to be the radius
+	if dist <= Config.ZoneRange then -- how much to be the radius
 		local isEmergencyJob = getEmergencyJob()
 
 		if not isEmergencyJob then
