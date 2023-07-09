@@ -1,15 +1,5 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
--- Change the coords here down for your zones
-local zones = {
-	{ ['x'] = 228.57,  ['y'] = -786.07,  ['z'] = 30.7  },  -- legion parking 
-	{ ['x'] = 318.84,  ['y'] = -593.83,  ['z'] = 43.28 },  -- pillbox 
-	{ ['x'] = -619.61, ['y'] = 35.38,    ['z'] = 43.55 },  -- tinsel 
-	{ ['x'] = -46.53,  ['y'] = -1108.79, ['z'] = 26.44 },  -- pdm
-	{ ['x'] = 252.81,  ['y'] = -682.06,  ['z'] = 45.87 },  -- apartment
-	{ ['x'] = -545.32, ['y'] = -203.91,  ['z'] = 38.22 },  -- town hall
-}
-
 local notifIn = false
 local notifOut = false
 local closestZone = 1
@@ -40,8 +30,8 @@ Citizen.CreateThread(function()
 		local playerPed = GetPlayerPed(-1)
 		local x, y, z = table.unpack(GetEntityCoords(playerPed, true))
 		local minDistance = 100000
-		for i = 1, #zones, 1 do
-			dist = Vdist(zones[i].x, zones[i].y, zones[i].z, x, y, z)
+		for i = 1, #Config.zones, 1 do
+			dist = Vdist(Config.zones[i].x, Config.zones[i].y, Config.zones[i].z, x, y, z)
 			if dist < minDistance then
 				minDistance = dist
 				closestZone = i
@@ -60,7 +50,7 @@ Citizen.CreateThread(function()
 		Citizen.Wait(0)
 		local player = GetPlayerPed(-1)
 		local x,y,z = table.unpack(GetEntityCoords(player, true))
-		local dist = Vdist(zones[closestZone].x, zones[closestZone].y, zones[closestZone].z, x, y, z)
+		local dist = Vdist(Config.zones[closestZone].x, Config.zones[closestZone].y, Config.zones[closestZone].z, x, y, z)
 		local ped = PlayerPedId()
 		local playerPed = PlayerPedId()
 	
@@ -91,7 +81,7 @@ end)
 RegisterNetEvent('safezone:client:zone', function()
 	local player = GetPlayerPed(-1)
 	local x,y,z = table.unpack(GetEntityCoords(player, true))
-	local dist = Vdist(zones[closestZone].x, zones[closestZone].y, zones[closestZone].z, x, y, z)
+	local dist = Vdist(Config.zones[closestZone].x, Config.zones[closestZone].y, Config.zones[closestZone].z, x, y, z)
 	local ped = PlayerPedId()
 
 	if dist <= Config.ZoneRange then -- how much to be the radius
